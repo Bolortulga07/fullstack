@@ -12,5 +12,7 @@ export default [
     route("movies/:movieId", "routes/movieDetail.tsx"),
     route("movies/create", "modules/movies/create.tsx"),
     route("movies/update/:id", "modules/movies/update.tsx"),
+    route("auth/register", "modules/auth/register.tsx"),
+    route("auth/login", "modules/auth/login.tsx"),
   ]),
 ] satisfies RouteConfig;

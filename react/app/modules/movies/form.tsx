@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import type { Movie } from "~/types";
+import { useEffect } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
-import type { Props } from "~/types";
+import type { Props, PropsUser } from "~/types";
 
 export const Form = (props: Props) => {
   const { movie, onSave } = props;
@@ -10,7 +9,6 @@ export const Form = (props: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors },
   } = useForm({
@@ -115,6 +113,215 @@ export const Form = (props: Props) => {
         Image
         <input
           {...register("image")}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
+        />
+      </label>
+      <button
+        type="submit"
+        style={{
+          padding: "12px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "16px",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease",
+        }}
+        onMouseOver={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            "#0056b3";
+        }}
+        onMouseOut={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            "#007bff";
+        }}
+      >
+        Save
+      </button>
+    </form>
+  );
+};
+
+export const FormUser = (props: PropsUser) => {
+  const { user, onSave } = props;
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: user?.username || "",
+      email: user?.email || "",
+      password: user?.password || "",
+    },
+  });
+
+  useEffect(() => {
+    setValue("username", user?.username || "");
+    setValue("email", user?.email || "");
+    setValue("password", user?.password || "");
+  }, [user]);
+
+  const onSubmit: SubmitHandler<any> = (data) => {
+    onSave(data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "30px",
+        background: "#fff",
+        borderRadius: "12px",
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      }}
+    >
+      <label style={{ marginBottom: "10px", color: "#333" }}>
+        username
+        <input
+          {...register("username")}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
+        />
+      </label>
+      <label style={{ marginBottom: "10px", color: "#333" }}>
+        email
+        <input
+          {...register("email")}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
+        />
+      </label>
+      <label style={{ marginBottom: "10px", color: "#333" }}>
+        password
+        <input
+          {...register("password")}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
+        />
+      </label>
+      <button
+        type="submit"
+        style={{
+          padding: "12px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "16px",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease",
+        }}
+        onMouseOver={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            "#0056b3";
+        }}
+        onMouseOut={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            "#007bff";
+        }}
+      >
+        Save
+      </button>
+    </form>
+  );
+};
+
+export const Login = (props: PropsUser) => {
+  const { user, onSave } = props;
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: user?.email || "",
+      password: user?.password || "",
+    },
+  });
+
+  useEffect(() => {
+    setValue("email", user?.email || "");
+    setValue("password", user?.password || "");
+  }, [user]);
+
+  const onSubmit: SubmitHandler<any> = (data) => {
+    onSave(data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "30px",
+        background: "#fff",
+        borderRadius: "12px",
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      }}
+    >
+      <label style={{ marginBottom: "10px", color: "#333" }}>
+        email
+        <input
+          {...register("email")}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
+        />
+      </label>
+      <label style={{ marginBottom: "10px", color: "#333" }}>
+        password
+        <input
+          {...register("password")}
           style={{
             width: "100%",
             padding: "10px",

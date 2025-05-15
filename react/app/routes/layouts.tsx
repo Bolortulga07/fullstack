@@ -6,6 +6,7 @@ export default function layout() {
       <h1>Movies</h1>
       <Link to="/">movie list</Link>
       <Link to="/movies/create">create</Link>
+      <Link to="/">logout</Link>
       <Outlet />
     </div>
   );

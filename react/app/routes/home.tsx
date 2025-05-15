@@ -11,6 +11,8 @@ export default function Home() {
       <h1>Movie </h1>
 
       <Link to="movies">Movies</Link>
+      <Link to="auth/register">Register</Link>
+      <Link to="auth/login">Login</Link>
       <Link to="authors">Authorss</Link>
     </div>
   );
